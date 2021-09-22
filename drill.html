@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Drilling Project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="Resume.pdf" class="logo" target="_blank">Resume</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Home Page</a></li>
+							<li class="active"><a href="drill.html">Power BI: Data Analysis</a></li>
+							<li><a href="movie.html">Python: Data Analysis</a></li>
+							<li><a href="sql.html">SQL</a></li>
+							<li><a href="dataClean.html">Data Cleanup</a></li>
+							<li><a href="effeciency.html">Python: Workflow</a></li>
+						</ul>
+
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">April 25, 2017</span>
+									<h1>Power BI & SQL: Data Analysis</h1>
+
+								</header>
+								<h3>For this project, we'll include video walkthrough's for each question in order to capture the interactivity of Power BI.
+									What I'm trying to showcase here is not the ability to track down data but instead, the ability to create the Power BI dashboard to where it makes finding these answers a remedial task.
+								</h3>
+								<h3>Q1: How many days did it take to drill our best and worst performing Wells in 2021?</h3>
+
+								<ul class="moviePicDesc">
+								    <li>Adjust the date range to only show 2021 data.</li>
+                                </ul>   
+                                <img src="images/drillQ1a.JPG"  width="250" height="150">
+
+								<ul class="moviePicDesc">
+								    <li>Sort the Total Tiime column in the table in ascending order for fastest and descending order for slowest.</li>
+                                </ul>   
+                                <img src="images/drillQ1fast.JPG"  width="550" height="350">
+								<img src="images/drillQ1slow.JPG"  width="550" height="350">
+
+								<ul class="moviePicDesc"> 
+									<li>Fastest Well Duration: 12.38 days</li>
+									<li>Slowest Well Duration: 43.38 days</li>
+								</ul>
+
+								<h3>Video walkthrough for Q1:</h3>
+								<div class="image main">
+									<video width="720" height="500" controls id="drillvid1">
+										<source src="images/drillQ1.mp4" type="video/mp4">
+								  	</video></div>
+
+
+
+								<h3>Q2: What were the differences in total NPT (Non productive time) for these two Wells?</h3>
+								
+								<ul class="moviePicDesc">
+								    <li>Using Ctrl, select both Wells from the same table, now scroll down to the table that shows NPT data.</li>
+                                </ul>   
+                                <img src="images/drillQ2b.JPG"  width="400" height="200">
+
+								<ul class="moviePicDesc">
+									<li>Fastest Well NPT: 26.5 Hrs</li>
+									<li>Slowest Well NPT: 157.25 Hrs</li>
+								</ul>
+
+								<h3>Video walkthrough for Q2:</h3>
+								<div class="image main">
+									<video width="720" height="500" controls id="drillvid1">
+										<source src="images/drillQ2.mp4" type="video/mp4">
+								  	</video></div>
+		
+
+								<h3>Q3: How much time was spent tripping for these two wells?</h3>
+
+								<ul class="moviePicDesc">
+								    <li>Now it's time to utilize one of my favorite features of Power BI, the ability to "Drill-through" which allows you to go from a general page to a more detailed page.</li>
+									<li>For Each Well, you'll need to right-click and select the "Drill-through" option and select "Well-Detailed" which is a page I created to show Well Specific Details.</li>
+                                </ul>   
+                                <img src="images/drillQ3drillThrough.jpeg"  width="500" height="300">
+								<p></p>
+								<h4>Well-Detailed Pages</h4>
+								<img src="images/drillQ3slow.jpeg"  width="750" height="500">
+								<img src="images/drillQ3fast.jpeg"  width="750" height="500">
+								<p></p>
+								<ul class="moviePicDesc">
+									<li>Fastest Well Trip: 1.94 Days</li>
+									<li>Slowest Well Trip: 12.45 Days</li>
+								</ul>
+								<p></p>
+
+								<h3>Video walkthrough for Q3:</h3>
+   
+								<div class="image main">
+									<video width="720" height="500" controls id="drillvid1">
+										<source src="images/drillQ3.mp4" type="video/mp4">
+								  	</video></div>
+	
+							</section>
+
+					</div>
+
+				
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

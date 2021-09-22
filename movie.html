@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Movie Ratings</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="Resume.pdf" class="logo" target="_blank">Resume</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Home Page</a></li>
+							<li><a href="drill.html">Power BI: Data Analysis</a></li>
+							<li class="active"><a href="movie.html">Python: Data Analysis</a></li>
+                            <li><a href="sql.html">SQL</a></li>
+                            <li><a href="dataClean.html">Data Cleanup</a></li>
+                            <li><a href="effeciency.html">Python: Workflow</a></li>
+						</ul>
+
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">April 25, 2017</span>
+									<h1>Python: Data Analysis</h1>
+
+								</header>
+								<h3> For this project, we'll be utilizing built in Python libraries, such as Pandas, Seaborn, etc. These built in libraries are quite powerful when it comes to analyzing and visualizing data.
+								</h3>
+                                <ul class="moviePicDesc">
+								    <li>Let's start with some cutouts of how we generally set things up into a what's known as a dataframe.</li>
+                                    <li>Below we can see that we took the csv file and turned it into a Python DataFrame. </li>
+                                </ul>   
+                                <img src="images/movie01.jpeg"  width="450" height="300">
+
+                                <ul class="moviePicDesc">
+								    <li>Let's print out the first 5 rows of the dataframe to see what our data looks like.</li>
+                                </ul>   
+                                <img src="images/movie02.jpeg"  width="530" height="250">
+                                
+                                <ul class="moviePicDesc">
+								    <li>Now would be a good time to answer Question #1.</li>
+                                </ul> 
+                                <h3>Q1: How many movies of each Category do we have?</h3>
+                                <ul class="moviePicDesc">
+								    <li>Here we can utilize the value_counts() function...</li>
+                                </ul> 
+                                <img src="images/movie03.jpeg"  width="350" height="200">
+
+                                <h3>Q2: What Genre has the highest Budget (average)?</h3>
+                                <ul class="moviePicDesc">
+								    <li>Here we can utilize the groupby() and mean() functions...</li>
+                                </ul> 
+                                <img src="images/movie04.jpeg"  width="600" height="300">
+
+                                <ul class="moviePicDesc">
+								    <li>Answer: Action, with an average budget of $84.63 Million</li>
+                                </ul> 
+
+
+                                <h3>Q3: What Genre has the highest median and max critic Ratings? Also, which has the lowest Q3 critic Rating? </h3>
+                                <ul class="moviePicDesc">
+								    <li>Although we can do this by functions like the first two, this seems like a perfect opportunity for a box plot...</li>
+                                </ul> 
+                                <img src="images/movie05.jpeg"  width="600" height="350">
+
+                                <ul class="moviePicDesc">
+								    <li>Highest Median: Thriller</li>
+                                    <li>Highest Max: Tie between Comedy and Drama</li>
+                                    <li>Lowest Q3: Horror</li>
+                                </ul> 
+
+					</div>
+
+				
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

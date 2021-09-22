@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>SQL: Data Cleanup</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="Resume.pdf" class="logo" target="_blank">Resume</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Home Page</a></li>
+							<li><a href="drill.html">Power BI: Data Analysis</a></li>
+							<li><a href="movie.html">Python: Data Analysis</a></li>
+                            <li><a href="sql.html">SQL</a></li>
+                            <li class="active"><a href="dataClean.html">Data Cleanup</a></li>
+                            <li><a href="effeciency.html">Python: Workflow</a></li>
+						</ul>
+						
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+
+									<h1>SQL: Batch Data Cleanup</h1>
+
+								</header>
+
+                                <ul class="moviePicDesc">
+								    <li>Let's start with querying the data that has missing values, so we know what needs to be updated.</li>
+
+                                </ul>   
+                                <img src="images/dataClean1.jpeg"  width="550" height="250">
+
+                                <ul class="moviePicDesc">
+								    <li> Now let’s export the data to an excel sheet so we can inspect it.</li>
+                                </ul>   
+                                <img src="images/dataClean2.jpeg"  width="1020" height="300">
+                                
+                                <ul class="moviePicDesc">
+								    <li>Looking at the spreadsheet, it looks like we need to fill in column D with the values from column E. </li>
+                                    <li>We need to be sure to set conditions to make it as specific as possible so in this case we’ll condition it with report journal ID, Well ID and Wellbore ID.</li>
+                                </ul> 
+ 
+                                <img src="images/dataClean3.jpeg"  width="950" height="300">
+
+                                <ul class="moviePicDesc">
+								    <li>Now we can add the following formula to the first row and copy it down all the way to the last row.</li>
+                                </ul> 
+                                <pre><code class="language-sql">="update DM_Well_Plan SET estimated_duration = "&D2&" where well_id = '"&F2&"' and report_journal_id = '"&E2&"' and wellbore_id = '"&G2&"';"</code></pre>
+
+                                <ul class="moviePicDesc">
+								    <li>Now we’re ready to copy and paste all of the Update statements(column H) into sql developer.</li>
+                                </ul> 
+
+                                <img src="images/dataClean4.jpeg"  width="900" height="350">
+
+                                <ul class="moviePicDesc">
+								    <li>Lastly, click on "Run All" to run the entire page of scripts at once.</li>
+                                    <li>That's it! All the rows were corrected at the same time instead of having to go Well by Well. </li>
+                                </ul> 
+
+					</div>
+
+				
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

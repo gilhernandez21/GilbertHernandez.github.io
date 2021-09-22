@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Python: Workflow</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="Resume.pdf" class="logo" target="_blank">Resume</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Home Page</a></li>
+							<li><a href="drill.html">Power BI: Data Analysis</a></li>
+							<li><a href="movie.html">Python: Data Analysis</a></li>
+                            <li><a href="sql.html">SQL</a></li>
+                            <li><a href="dataClean.html">Data Cleanup</a></li>
+                            <li class="active"><a href="effeciency.html">Python: Workflow</a></li>
+						</ul>
+						
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+
+									<h1>Python: Workflow Automation</h1>
+
+								</header>
+
+                                <ul class="moviePicDesc">
+								    <li>Scenario: about twice a week, a vendor company sends me a spreadsheet with the tools they ran in our Wells. They'd ask me to query the data based off of the serial No’s they sent me in the spreadsheet. 
+                                        I thought to myself, sure I can easily do this manually and type the 30 to 40 serial numbers into a saved query every time, Or I can use Python to scrape the spreadsheet they send me, then connect to Oracle and query this data, feed the results into a spreadsheet ready to email back.</li>
+
+                                </ul>   
+                                <img src="images/aha-moment.jpeg"  width="350" height="200">
+
+                                <ul class="moviePicDesc">
+								    <li>Below is the python script I wrote to do just that, and it’s saved me a couple of hours a week for the last two years. </li>
+
+                                </ul>   
+
+                                <pre><code class="language-python">import pandas as pd
+import cx_Oracle
+import os
+                                    
+path = os.chdir("C:\\Users\\hernang2\\OneDrive - Oxy\\Tomax")
+
+#put the data from spreadsheet into a dataframe
+df = pd.read_excel("Oxy Tracker Request.xlsx", sheet_name = 'Sheet1',engine='openpyxl')
+                                    
+#get only serial no's
+tool_list = df['Tool Type']
+                                    
+#build connection string to our Oracle Server
+conn_str = u'oxy_read/oxy_read@HOPSPP'
+conn = cx_Oracle.connect(conn_str)
+c = conn.cursor()
+t = tuple(tool_list)
+
+#write out the sql query
+query = 'SELECT CD_ASSEMBLY.assembly_no, CD_ASSEMBLY_COMP.comp_name, CD_ASSEMBLY_COMP.description, 
+round(CD_ASSEMBLY_COMP.md_base + NVL(CD_DATUM.datum_elevation, 0),2), CD_ASSEMBLY_COMP.md_top + NVL(CD_DATUM.datum_elevation, 0),
+CD_ASSEMBLY_COMP.serial_no, CD_POLICY.customer_name, CD_WELL.api_no, CD_WELL.loc_county, CD_WELL.well_common_name, 
+DM_BHA_RUN.date_in, DM_BHA_RUN.date_out, round((DM_BHA_RUN.date_out - DM_BHA_RUN.date_in),1)* 24 AS SUM_HRS, 
+round(DM_BHA_RUN.md_in + NVL(CD_DATUM.datum_elevation, 0),2) as MD_IN, round(DM_BHA_RUN.md_out + NVL(CD_DATUM.datum_elevation, 0),2)as MD_OUT 
+FROM CD_ASSEMBLY_COMP, CD_ASSEMBLY, CD_WELL, CD_SITE, CD_PROJECT, CD_POLICY, DM_BHA_RUN, CD_DATUM WHERE (((CD_ASSEMBLY_COMP.serial_no IN{}))) 
+AND ((CD_ASSEMBLY.well_id = CD_ASSEMBLY_COMP.well_id AND  CD_ASSEMBLY.wellbore_id = CD_ASSEMBLY_COMP.wellbore_id AND  
+CD_ASSEMBLY.assembly_id = CD_ASSEMBLY_COMP.assembly_id) AND  (CD_WELL.well_id = CD_ASSEMBLY.well_id) AND (CD_SITE.site_id =  CD_WELL.site_id) 
+AND (CD_PROJECT.project_id = CD_SITE.project_id) AND  (CD_POLICY.policy_id = CD_PROJECT.policy_id) AND (DM_BHA_RUN.well_id=CD_ASSEMBLY_COMP.well_id
+AND DM_BHA_RUN.wellbore_id=CD_ASSEMBLY_COMP.wellbore_id AND DM_BHA_RUN.assembly_id=CD_ASSEMBLY_COMP.assembly_id) AND  (CD_ASSEMBLY.well_id = DM_BHA_RUN.well_id 
+AND CD_ASSEMBLY.wellbore_id =  DM_BHA_RUN.wellbore_id AND CD_ASSEMBLY.assembly_id =   DM_BHA_RUN.assembly_id) AND (CD_WELL.well_id = DM_BHA_RUN.well_id)) 
+AND ( UPPER( CD_DATUM.is_default ) = \'Y\' ) AND  (CD_WELL.well_id = CD_DATUM.well_id) ORDER BY 11 ASC, 10 ASC'.format(t)
+ 
+#save results in a dataframe
+df = pd.read_sql(query,con = conn )
+                                    
+print(df)
+conn.close()
+                                    
+#write to a csv file and save it                                    
+fileOut = df.to_csv('TomaxExport.csv')
+                                    </code></pre>
+
+
+					</div>
+
+				
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
